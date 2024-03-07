@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <h1>Hello, world!</h1>
+    {% for video in videos %}
+        <div>
+            <a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">
+                <img src="{{ video.snippet.thumbnails.default.url }}" alt="Thumbnail for the {{ video.snippet.title }} video">
+                <h2><a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">{{ video.snippet.title }}</a></h2>
+            </a>
+        </div>
+    {% endfor %}
+</body>
+</html>
