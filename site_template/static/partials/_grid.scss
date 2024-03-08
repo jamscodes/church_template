@@ -1,0 +1,31 @@
+@use 'reset';
+
+%row {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+%col {
+    padding: 1rem;
+}
+
+.row {
+    & {
+        @extend %row;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &-fw {
+        @extend %row;
+        width: 100%;
+    }
+}
+
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        @extend %col;
+        width: calc(100% / $i);
+    }
+}
