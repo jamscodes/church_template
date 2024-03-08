@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.text-primary-80 {
+  color: #55286f;
+}
+
+.text-primary-90 {
+  color: #5f0295;
+}
+
+.text-primary-100 {
+  color: #600097;
+}
+
+.text-secondary-80 {
+  color: #ae759f;
+}
+
+.text-secondary-90 {
+  color: #e53eb9;
+}
+
+.text-secondary-100 {
+  color: #ff24c5;
+}
+
+.row-fw, .row {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
+  padding: 1rem;
+}
+
+.row {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.row-fw {
+  width: 100%;
+}
+
+.col-1 {
+  width: 100%;
+}
+
+.col-2 {
+  width: 50%;
+}
+
+.col-3 {
+  width: 33.3333333333%;
+}
+
+.col-4 {
+  width: 25%;
+}
+
+.col-5 {
+  width: 20%;
+}
+
+.col-6 {
+  width: 16.6666666667%;
+}
+
+.col-7 {
+  width: 14.2857142857%;
+}
+
+.col-8 {
+  width: 12.5%;
+}
+
+.col-9 {
+  width: 11.1111111111%;
+}
+
+.col-10 {
+  width: 10%;
+}
+
+.col-11 {
+  width: 9.0909090909%;
+}
+
+.col-12 {
+  width: 8.3333333333%;
+}/*# sourceMappingURL=styles.css.map */

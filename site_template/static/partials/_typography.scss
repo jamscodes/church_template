@@ -1,0 +1,11 @@
+@use 'colors';
+@use 'sass:map';
+@use 'sass:color';
+
+@each $color, $hex in colors.$colors {
+    @for $i from 2 through 0 {
+        .text-#{$color}-#{100 - ($i * 10)} {
+            color: color.adjust($hex, $saturation: (100% - ($i * 50%)))
+        }
+    }
+}
