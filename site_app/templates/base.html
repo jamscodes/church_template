@@ -8,6 +8,22 @@
     <title>{% block title %}Default Title Text{% endblock %}</title>
 </head>
 <body>
+    {% block nav %}
+    <div class="row-fw">
+        <div class="col-8 offset-2">
+            <img src="{% static 'images/saint-peter-banner.webp' %}" alt="Image showing an icon of Saint Peter, an icon of the Last Supper behind text that says St. Peter Orthodox Church: a western rite parish of the Antiochian Orthodox Archdiocese">
+        </div>
+        <nav class="col-8 offset-2 d-flex space-between">
+            <a href="#" class="active">Home</a>
+            <a href="#">I'm New</a>
+            <a href="#">Parish Life</a>
+            <a href="#">Media</a>
+            <a href="#">Calendars</a>
+            <a href="#">Orthodoxy</a>
+            <a href="#">About Us</a>
+        </nav>
+    </div>
+    {% endblock %}
     {% block content %}{% endblock %}
 </body>
 </html>

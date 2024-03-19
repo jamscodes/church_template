@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+    <section class="row">
+        <h1>{{ playlist.title }}</h1>
+        {% for video in videos %}
+        <div class="col-3">
+            <a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">
+                <img src="{{ video.snippet.thumbnails.medium.url }}" alt="Thumbnail for the {{ video.snippet.title }} video">
+            </a>
+            <h2 class="h4"><a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">{{ video.snippet.title }}</a></h2>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
