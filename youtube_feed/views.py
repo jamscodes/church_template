@@ -7,31 +7,38 @@ from .models import Playlist
 BASE_URL = 'https://www.googleapis.com/youtube/v3'
 
 # Create your views here.
-# class PlaylistSingleView(ListView):
-#     template_name = "single_playlist.html"
+## HELPER METHODS
+def get_json_response(id:str) -> list:
+    r = api.get(f'{BASE_URL}/playlistItems?part=snippet&playlistId={id}&key={settings.YOUTUBE_API_KEY}')
+    json = r.json()
 
-#     # def get_context_data(self, **kwargs):
-#     #     context = super().get_context_data(**kwargs)
+    return json['items']
 
-#     #     context["videos"] = []
-#     #     context["playlist"] = {}
 
-#     def get_queryset(self):
-#         context = super().get_context_data()
-#         context["playlist"] = get_object_or_404(Playlist, id=self.kwargs["playlist_id"])
+## VIEW METHODS
+def view_all_playlists(request):
+    playlists = Playlist.objects.all().order_by('-id')[:10:-1]
 
-#         r = api.get(f"{BASE_URL}/playlistItems?part=snippet&playlistId={context["playlist"].retrieve_playlist_id()}&key={settings.YOUTUBE_API_KEY}")
-#         context["videos"] = r.json()
+    context = {
+        'playlists': []
+    }
 
-#         return context
-    
+    for playlist in playlists:
 
+        if playlist.featured:
+            context['featured'] = {
+                'playlist': playlist,
+                'videos': get_json_response(playlist.retrieve_playlist_id())
+            }
+        else:
+            context['playlists'].append(playlist)
+
+    return render(request, 'youtube_feed.html', context=context)
 
 
 def view_one_playlist(request, playlist_id = None):
-    featured_playlist = get_object_or_404(Playlist, id=playlist_id)
+    playlist = get_object_or_404(Playlist, id=playlist_id)
 
-    r = api.get(f'{BASE_URL}/playlistItems?part=snippet&playlistId={featured_playlist.retrieve_playlist_id()}&key={settings.YOUTUBE_API_KEY}')
-    json = r.json()
+    items = get_json_response(playlist.retrieve_playlist_id())
 
-    return render(request, 'single_playlist.html', context={'playlist': featured_playlist, 'videos': json['items']})
+    return render(request, 'single_playlist.html', context={'playlist': playlist, 'videos': items})

@@ -4,26 +4,57 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block title %}Default Title Text{% endblock %}</title>
 </head>
 <body>
     {% block nav %}
-    <div class="row-fw">
-        <div class="col-8 offset-2">
-            <img src="{% static 'images/saint-peter-banner.webp' %}" alt="Image showing an icon of Saint Peter, an icon of the Last Supper behind text that says St. Peter Orthodox Church: a western rite parish of the Antiochian Orthodox Archdiocese">
+    <div class="container-fluid bg-primary">
+        <div class="row">
+            <div class="col-8 offset-2 text-center">
+                <img src="{% static 'images/saint-peter-banner.webp' %}" alt="Image showing an icon of Saint Peter, an icon of the Last Supper behind text that says St. Peter Orthodox Church: a western rite parish of the Antiochian Orthodox Archdiocese">
+            </div>
         </div>
-        <nav class="col-8 offset-2 d-flex space-between">
-            <a href="#" class="active">Home</a>
-            <a href="#">I'm New</a>
-            <a href="#">Parish Life</a>
-            <a href="#">Media</a>
-            <a href="#">Calendars</a>
-            <a href="#">Orthodoxy</a>
-            <a href="#">About Us</a>
-        </nav>
+        <div class="row border-top border-bottom border-3 border-info">
+            <nav class="col-8 offset-2 d-flex justify-content-around py-2">
+                <a href="#" class="text-info text-decoration-none fs-6">Home</a>
+                <a href="#" class="text-light text-decoration-none fs-6">I'm New</a>
+                <a href="#" class="text-light text-decoration-none fs-6">Parish Life</a>
+                <a href="#" class="text-light text-decoration-none fs-6">Media</a>
+                <a href="#" class="text-light text-decoration-none fs-6">Calendars</a>
+                <a href="#" class="text-light text-decoration-none fs-6">Orthodoxy</a>
+                <a href="#" class="text-light text-decoration-none fs-6">About Us</a>
+            </nav>
+        </div>
     </div>
     {% endblock %}
     {% block content %}{% endblock %}
+    {% block footer %}
+    <div class="container-fluid bg-primary py-3">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="row">
+                    <div class="col-3 text-center">
+                        <button class="btn btn-info rounded-pill">Donate</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <p class="text-light">St. Peter Orthodox Church</p>
+                        <p class="text-light">7601 Bellaire Dr. S, Fort Worth, TX 76132-4304</p>
+                        <p class="text-light">(817) 263-5554</p>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn">Facebook Share</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <p class="text-light mb-0">©2017 by St. Peter Orthodox Church.</p>
+        </div>
+    </div>
+    {% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
