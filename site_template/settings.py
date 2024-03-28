@@ -54,9 +54,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = 'site_template.urls'
@@ -79,15 +76,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'site_template.wsgi.application'
 
-
-# Caches
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
-        "LOCATION": "site_cache",
-        "TIMEOUT": 500
-    }
-}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
