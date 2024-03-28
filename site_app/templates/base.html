@@ -4,10 +4,47 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
     <title>{% block title %}Default Title Text{% endblock %}</title>
 </head>
 <body>
+    {% block nav %}
+    <header class="w-full bg-red-700">
+        <img src="{% static 'images/saint-peter-banner.webp' %}" alt="Image showing an icon of Saint Peter, an icon of the Last Supper behind text that says St. Peter Orthodox Church: a western rite parish of the Antiochian Orthodox Archdiocese" class="w-1/2 mx-auto">
+        <div class="w-full py-2 border-t-2 border-b-2 border-yellow-400">
+            <nav class="w-1/2 mx-auto flex justify-between">
+                <a href="#" class="text-lg text-yellow-400">Home</a>
+                <a href="#" class="text-lg text-slate-100">I'm New</a>
+                <a href="#" class="text-lg text-slate-100">Parish Life</a>
+                <a href="#" class="text-lg text-slate-100">Media</a>
+                <a href="#" class="text-lg text-slate-100">Calendars</a>
+                <a href="#" class="text-lg text-slate-100">Orthodoxy</a>
+                <a href="#" class="text-lg text-slate-100">About Us</a>
+            </nav>
+        </div>
+    </header>
+    {% endblock %}
     {% block content %}{% endblock %}
+    {% block footer %}
+    <footer class="w-full bg-red-700 h-48 py-4">
+        <div class="w-1/2 mx-auto grid grid-cols-3">
+            <div class="flex justify-center">
+                <button class="cta-yellow">Donate</button>
+            </div>
+            <div class="text-center">
+                <p class="text-slate-100">St. Peter Orthodox Church</p>
+                <p class="text-slate-100">7601 Bellaire Dr. S, Fort Worth, TX 76132-4304</p>
+                <p class="text-slate-100">(817) 263-5554</p>
+            </div>
+            <div class="flex justify-center">
+                <button>Facebook Share</button>
+            </div>
+        </div>
+    </footer>
+    {% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

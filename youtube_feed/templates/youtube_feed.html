@@ -1,15 +1,58 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello, world!</h1>
-<section class="row">
-    {% for video in videos %}
-    <div class="col-3">
-        <a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">
-            <img src="{{ video.snippet.thumbnails.medium.url }}" alt="Thumbnail for the {{ video.snippet.title }} video">
-        </a>
-        <h2><a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">{{ video.snippet.title }}</a></h2>
-    </div>
-    {% endfor %}
-</section>
+{% load static %}
+<main class="bg-blue-950 py-20 text-slate-100">
+    <section class="header-box-top text-center">
+        <h1>Video Ministry & Teachings</h1>
+        <q>So faith comes from hearing, and hearing from the word of Christ.</q>
+        <p class="mb-0">- <cite>Romans 10 : 17</cite></p>
+    </section>
+    {% if featured %}
+    <section class="content-section bg-slate-100 text-slate-900">
+        <h2 class="text-center">{{ featured.playlist.title }}</h2>
+        <p>{{ featured.playlist.description|linebreaks }}</p>
+        <div class="featured-playlist-slider">
+            {% for video in featured.videos %}
+            <div class="mx-3">
+                <a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">
+                    <img src="{{ video.snippet.thumbnails.medium.url }}" alt="Thumbnail for the {{ video.snippet.title }} video">
+                </a>
+                <h3 class="px-4 text-lg text-center"><a target="_blank" href="https://www.youtube.com/watch?v={{ video.snippet.resourceId.videoId }}">{{ video.snippet.title }}</a></h3>
+            </div>
+            {% endfor %}
+        </div>
+        <section class="flex justify-between">
+            <button class="cta-blue nav-previous">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+                Previous
+            </button>
+            <button class="cta-blue nav-next">
+                Next
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
+            </button>
+        </section>
+    </section>
+    {% endif %}
+    <section>
+        <h2 class="content-section text-center">Previous Series</h2>
+        <div class="columns-2 w-1/2 mx-auto">
+            {% for playlist in playlists %}
+            <section class="break-inside-avoid content-section w-full bg-slate-100 text-slate-900">
+                <h3 class="text-center"><a href="{% url 'one_playlist' playlist.id %}">{{ playlist.title }}</a></h3>
+                {{ playlist.description|linebreaks }}
+            </section>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="header-box-bottom flex justify-around items-center">
+        <button class="cta-red">Listen to Music</button>
+        <a href="http://www.ancientfaith.com/" target="_blank"><img src="{% static 'images/ancient-faith-logo.webp' %}" alt="Logo for Ancient Faith Radio" class="border-2 border-slate-100 rounded-lg"></a>
+        <button class="cta-red">Listen to Talk</button>
+    </section>
+</main>
 {% endblock %}
